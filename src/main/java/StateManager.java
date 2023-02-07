@@ -7,7 +7,6 @@ import java.lang.reflect.Type;
 public class StateManager {
     private static final String FILE_NAME = "game.json";
 
-
         public void saveGame(Board board, Player[] players, int turn) {
             try {
                 Gson gson = new Gson();
