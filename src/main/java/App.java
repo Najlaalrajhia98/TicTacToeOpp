@@ -14,10 +14,14 @@ public class App {
         Board board = new Board(symbols);
         Player[] players = new Player[]{new Player("Player 1", symbols[0]), new Player("Player 2", symbols[1])};
         int turn = 0;
+
         if (choice.equalsIgnoreCase("yes")){
             stateManager.loadGame(board,players,turn);
             board.printBoard(board.getSlots());
+            playGame(board, sc, stateManager, symbols, players, turn);
         }
+        else if  (choice.equalsIgnoreCase("no")) {
+
             System.out.println(" Player 1 Enter your symbol (X or O):");
             String playerSymbol = sc.nextLine();
             while (!playerSymbol.equalsIgnoreCase("X") && !playerSymbol.equalsIgnoreCase("O")) {
@@ -32,12 +36,11 @@ public class App {
                 players[0] = new Player("Player 2", symbols[0]);
                 players[1] = new Player("Player 1", symbols[1]);
             }
-
             playGame(board, sc, stateManager, symbols, players, turn);
+        }
         }
 
     private static void playGame (Board board,Scanner sc,StateManager stateManager,Symbol[] symbols,Player[] players,int turn){
-
 
         while (!board.isFull() && !board.isWinner(players[turn % 2].getSymbol())) {
             System.out.println("Current board:");
